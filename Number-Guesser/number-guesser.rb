@@ -1,3 +1,4 @@
+
 number = rand(1..100)
 puts "Guess a number."
 guess = gets.chomp.to_i
@@ -7,3 +8,7 @@ else
   puts "Wrong. Cheer up, the odds were against you."
 end
 
+def number_guesser(guess)
+  number = rand(1..100)
+  guess == number
+end
