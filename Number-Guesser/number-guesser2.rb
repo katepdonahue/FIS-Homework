@@ -50,16 +50,27 @@ elsif says == "y"
     end
     puts "Ok, let's play!"
     number = rand(num1..num2)
+    guess_history = []
+    guess_index = -1
     while guess_again(reguess,number)
       puts "Guess a number between #{num1} and #{num2} (inclusive)."
       guess = gets.chomp.to_i
+      guess_history << guess
+      guess_index += 1
       if guess == number
         puts "That's amazing! You got it right!"
         break
       else
-        puts "Wrong. Would you like a hint? (y or n)"
+        if guess_index == 0 then puts "Wrong." end
+        unless guess_index == 0
+          if (number - guess_history[guess_index]).abs > (number - guess_history[guess_index - 1]).abs then puts "Colder!"
+          elsif (number - guess_history[guess_index]).abs < (number - guess_history[guess_index - 1]).abs then puts "Warmer!"
+          else puts "You just guessed that!"
+          end
+        end
+        puts "Would you like a hint? (y or n)"
         want_hint = gets.chomp
-        if want_hint == "y"
+        if want_hint == "y"  
           if number - guess > 0 then puts "Higher."
           else puts "Lower."
           end
