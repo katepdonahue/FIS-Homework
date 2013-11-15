@@ -60,15 +60,9 @@ elsif says == "y"
         puts "Wrong. Would you like a hint? (y or n)"
         want_hint = gets.chomp
         if want_hint == "y"
-          if number - guess > 0
-            puts "Higher."
-          else
-            puts "Lower."
+          if number - guess > 0 then puts "Higher."
+          else puts "Lower."
           end
-        elsif want_hint == "n"
-          exit
-        else
-          puts "I am but a humble computer and I don't understand you."
         end
         puts "Would you like to guess again? (y or n)"
         reguess = gets.chomp
