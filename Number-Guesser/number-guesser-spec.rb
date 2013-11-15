@@ -1,7 +1,7 @@
 require './number-guesser'
 
 if [1..100].include? @number
-  @number = 70
+  number = 70
 
   describe "#number-guesser" do
     it "returns true if the guess is correct" do
