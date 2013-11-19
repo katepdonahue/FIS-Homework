@@ -22,7 +22,7 @@ def apple_picker(fruit)
   fruit.select { |x| x == "apple" }
 end
 
-puts apple_picker([2, 3, "apple", 4])
+# puts apple_picker([2, 3, "apple", 4])
 
 
 
