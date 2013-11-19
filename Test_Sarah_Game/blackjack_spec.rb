@@ -19,14 +19,4 @@ describe BlackJack do
       expect(BlackJack.new.score.to_s).to match_regex(/^[0]$/)
     end
   end
-
-  # describe "#yes_or_no" do
-  # end
-
-  # describe "#hits" do
-  # end
-
-  # describe "#play" do
-  # end
-
 end
