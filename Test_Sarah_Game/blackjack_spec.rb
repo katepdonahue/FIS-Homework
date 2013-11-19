@@ -20,45 +20,47 @@ describe BlackJack do
     end
   end
 
-  describe "#attr_writer" do
-    it "should assign the value assigned to card1 to @card1" do
-      expect(card1)
-    end
-  end
+  # describe "#attr_writer" do
+  #   it "should assign the value assigned to card1 to @card1" do
+  #     expect(card1)
+  #   end
+  # end
 
   describe "#yes_or_no" do
     it "should return true if text is 'y'" do
-      expect(yes_or_no("y")).to eq(true)
+      expect(BlackJack.new.yes_or_no("y")).to be_true
     end
     it "should return false if text is 'n'" do
-      expect(yes_or_no("n")).to eq(false)
+      expect(BlackJack.new.yes_or_no("n")).to be_false
     end
     it "should return false if text is anything else" do
-      expect(yes_or_no(6)).to eq(false)
+      expect(BlackJack.new.yes_or_no(6)).to be_false
     end
   end
 
-  describe "#score" do
-    
-  end
+  # describe "#score" do
+
+  # end
 
   describe "#wins?" do
-
+    it "should return true or false" do
+      expect(BlackJack.new.wins?).to be_a(Bool)
   end
 
-  describe "#initial_pos" do
+  # describe "#initial_pos" do
 
-  end
+  # end
 
-  describe "#early_win" do
+  # describe "#early_win" do
 
-  end
+  # end
 
-  describe "#hits" do
+  # describe "#hits" do
 
-  end
+  # end
 
-  describe "#play" do
+  # describe "#play" do
 
-  end
+  # end
+end
 end
