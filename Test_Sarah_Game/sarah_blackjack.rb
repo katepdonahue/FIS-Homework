@@ -119,7 +119,11 @@ class BlackJack
                                 end
                         end
                         if wins?
+                                if turns == 1
+                                        early_win
+                                else
                                 puts "You win!"
+                                end
                         elsif score > 21
                                 puts "Ruh roh, you're over 21. I win!"
                         else
