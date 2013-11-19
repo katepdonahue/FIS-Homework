@@ -25,29 +25,29 @@ class BlackJack
 
         attr_accessor :card1, :card2, :card3, :card4, :turns
 
-        def yes_or_no(text, play)
+        def yes_or_no(text)
                 # text = gets.chomp
                 if text == "y"
                         puts "Game on."
                         puts "You will get two cards initially and you can hit up to two times."
                         puts "If your score surpasses 21, then you lose.. and I win."
-                        play = true
+                        return true
                 elsif text == "n"
                         puts "Not feeling dangerous? Ok, come back when you are." 
-                        play = false       
+                        return false       
                 else
                         puts "Er, I don't understand. Sorry, maybe next time."
-                        play = false
+                        return false
                 end
         end
 
         def score
                 if turns == 1
-                        card_a + card_b
+                        card1 + card2
                 elsif turns == 2
-                        card_a + card_b + card_c
+                        card1 + card2 + card3
                 elsif turns > 2
-                        card_a + card_b + card_c card_d
+                        card1 + card2 + card3 + card4
                 end
         end
 
@@ -56,7 +56,7 @@ class BlackJack
         end
 
         def initial_pos
-                puts "Here are your first two cards: #{card1} and #{card2}. Your total score is #{score(0)}."
+                puts "Here are your first two cards: #{card1} and #{card2}. Your total score is #{score}."
         end
 
         def early_win
@@ -67,13 +67,12 @@ class BlackJack
                 # puts "Would you like to hit or stay?"
                 # text = gets.chomp
                 if text == "hit"
-                        puts "Your new card is #{turn == 1 ? card_c : card_d} and your new score is #{score}."
-                        turns += 1
+                        @turns += 1
+                        puts "Your new card is #{turns == 2 ? card3 : card4} and your new score is #{score}."
                 elsif text == "stay"
                         puts "Okay, your score is #{score}."
-                        turns += 2
                 else
-                        puts "Er, I don't understand. Sorry, you have exited the game."
+                        puts "Er, I don't understand. Please type 'hit' or 'stay'."
                 end
         end
                         # if score(card_a, card_b, card_c, card_d) > 21
@@ -106,19 +105,31 @@ class BlackJack
         # end
 
         def play
-                in_play = true
                 intro
                 response = gets.chomp
-                yes_or_no(response, in_play)
-                while in_play
+                in_play = yes_or_no(response)
+                while in_play == true
                         initial_pos
-                        while turns < 3
+                        while turns < 3 && score < 21
                                 puts "Would you like to hit or stay?"
                                 ans = gets.chomp
-                                hit(ans)
+                                hits(ans)
+                                if ans == "stay"
+                                        break
+                                end
                         end
+                        if wins?
+                                puts "You win!"
+                        elsif score > 21
+                                puts "Ruh roh, you're over 21. I win!"
+                        else
+                                puts "Okay. You didn't hit 21, so I win!!"
+                        end
+                        in_play = false
+                end
         end
+
 end
 
-game = BlackJack.new
-game.play
+new_game = BlackJack.new
+new_game.play
