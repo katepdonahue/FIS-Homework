@@ -26,7 +26,6 @@ class BlackJack
         attr_accessor :card1, :card2, :card3, :card4, :turns
 
         def yes_or_no(text)
-                # text = gets.chomp
                 if text == "y"
                         puts "Game on."
                         puts "You will get two cards initially and you can hit up to two times."
@@ -64,8 +63,6 @@ class BlackJack
         end
 
         def hits(text)
-                # puts "Would you like to hit or stay?"
-                # text = gets.chomp
                 if text == "hit"
                         @turns += 1
                         puts "Your new card is #{turns == 2 ? card3 : card4} and your new score is #{score}."
@@ -75,34 +72,6 @@ class BlackJack
                         puts "Er, I don't understand. Please type 'hit' or 'stay'."
                 end
         end
-                        # if score(card_a, card_b, card_c, card_d) > 21
-                        #         puts "Ruh roh, you're over 21. I win!"
-                        #         return
-                        # elsif wins?
-                        #         puts "You win!"
-                        #         return
-                        # end
-        #                 puts "Would you like to hit or stay?"
-        #                 text2 = gets.chomp
-        #                 if text2 == "hit"
-        #                         @score = @score + @card4
-        #                         puts "Your fourth and final card is #{@card4} and your new score is #{@score}."
-        #                         if @score.to_i > 21
-        #                                 puts "Ruh roh, you're over 21. I win!"
-        #                                 return
-        #                         elsif @score.to_i == 21
-        #                                 puts "You win!"
-        #                                 return
-        #                         end
-        #                 elsif text2 == "stay"
-        #                         puts "Okay. You didn't hit 21, so I win!"
-        #                         return
-        #                 end
-        #         elsif text == "stay"
-        #                 puts "Okay. You didn't hit 21, so I win!!"
-        #                 return
-        #         end        
-        # end
 
         def play
                 intro

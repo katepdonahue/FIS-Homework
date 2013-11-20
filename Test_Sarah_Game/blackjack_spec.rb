@@ -44,7 +44,7 @@ describe BlackJack do
 
   describe "#wins?" do
     it "should return true or false" do
-      expect(BlackJack.new.wins?).to be_a(Bool)
+      expect(BlackJack.new.wins?).to (Boolean).is_a_matcher? be_true
   end
 
   # describe "#initial_pos" do
@@ -56,7 +56,13 @@ describe BlackJack do
   # end
 
   # describe "#hits" do
-
+  #   it "should increment turns by 1 when text is 'hit'" do
+  #     expect(BlackJack.new.hits("hit")).to 
+  #   end
+  #   it "should not increment turns when text is 'stay'" do
+  #   end
+  #   it "should not increment turns when text is anything else" do
+  #   end
   # end
 
   # describe "#play" do
