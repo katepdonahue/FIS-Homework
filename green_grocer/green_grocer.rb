@@ -70,9 +70,9 @@ def cost_pre_discounts(cart_with_quant)
 end
 
 
-elf = count_cart([{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}])
-puts elf
-puts "duh"
+# elf = count_cart([{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}])
+# puts elf
+
 
 
 ##the cart is currently an array of individual items, translate it into a hash that includes the counts for each item
