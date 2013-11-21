@@ -30,18 +30,31 @@ def generateCoups
   coups
 end
 
-def count_cart(cart_array)
-  cart_hash = {}
-  cart_array.each do |item|
-    if cart_hash[item].nil?
-      cart_hash[item] = 1
-    else
-      cart_hash[item] += 1
-    end
+def add_counter(cart_array)
+  cart_array.map do |item_hash|
+    item_hash[:count] = 1
   end
-  cart_hash
+  cart_array
 end
 
+def count_cart(cart_array2)
+  cart_array_copy = cart_array2
+  cart_array2.map do |item_hash|
+    cart_array_copy.each do |item_hash_copy|
+      if item_hash == item_hash_copy
+        item_hash[:count] += 1
+      end
+    end
+    # delete duplicates from cart_array2
+  end
+  cart_array2.uniq
+end
+
+
+# elf = add_counter([{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}])
+# puts elf
+# puts "duh"
+# puts count_cart(elf)
 
 ##the cart is currently an array of individual items, translate it into a hash that includes the counts for each item
 #   For example if your cart was [  {"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}]
