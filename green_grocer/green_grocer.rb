@@ -74,6 +74,18 @@ def cost_pre_discounts(cart_with_quant)
 end
 
 def apply_coupon_discount(cart_with_quant)
+  cart_with_quant.map do |cart_item, info_hash|
+    COUPS.each do |hash|
+      if hash[:item] == cart_item
+        while info_hash[:count] >= hash[:num]
+          # take away difference in price (reg price - coupon price)
+          info_hash[:price] -= (info_hash[:price] * hash[:num]) - hash[:cost]
+          info_hash[:count] -= hash[:num]
+        end
+      end
+    end
+  end
+  cart_with_quant
 end
 
 

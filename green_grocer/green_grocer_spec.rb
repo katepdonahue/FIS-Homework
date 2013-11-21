@@ -16,7 +16,7 @@ end
 
 describe "#apply_coupon_discount" do
   it "should change prices when coupons are valid" do
-    expect(apply_coupon_discount(count_cart(cart))).to eq(8.00)
+    expect(apply_coupon_discount(count_cart(cart))).to eq({"AVOCADO" => {:price => 2.50, :clearance => true, :count => 2}, "HAM" => {:price => 3.00, :clearance => true, :count => 1}})
   end
 end
 
