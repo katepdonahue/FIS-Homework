@@ -14,7 +14,11 @@ describe "#cost_pre_discounts" do
   end
 end
 
-
+describe "#apply_coupon_discount" do
+  it "should change prices when coupons are valid" do
+    expect(apply_coupon_discount(count_cart(cart))).to eq(8.00)
+  end
+end
 
 # describe "#add_counter" do
 #   it "should add a :count key with a 0 value to each item hash in the cart array" do

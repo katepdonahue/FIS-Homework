@@ -73,6 +73,9 @@ def cost_pre_discounts(cart_with_quant)
   cost
 end
 
+def apply_coupon_discount(cart_with_quant)
+end
+
 
 # elf = count_cart([{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}])
 # puts elf
