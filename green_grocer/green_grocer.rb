@@ -30,33 +30,50 @@ def generateCoups
   coups
 end
 
-def add_counter(cart_array)
-  cart_array.map do |item_hash|
-    item_hash[:count] = 1
-  end
-  cart_array
-end
+# def add_counter(cart_array)
+#   cart_array.map do |item_hash|
+#     item_hash[:count] = 1
+#   end
+#   cart_array
+# end
 
-def count_cart(cart_with_count)
-  cart_array_copy = cart_with_count
-  cart_with_count.map do |item_hash|
-    cart_array_copy.each do |item_hash_copy|
-      if item_hash == item_hash_copy
-        item_hash[:count] += 1
+# def count_cart(cart_with_count)
+#   cart_array_copy = cart_with_count
+#   cart_with_count.map do |item_hash|
+#     cart_array_copy.each do |item_hash_copy|
+#       if item_hash == item_hash_copy
+#         item_hash[:count] += 1
+#       end
+#     end
+#   end
+#   cart_with_count.uniq
+# end
+
+def count_cart(cart_array)
+  cart_hash = {}
+  cart_array.each do |item_hash|
+    item_hash.each do |item, info_hash| # only one key value pair in here
+      if cart_hash[item].nil?
+        # if it's not there, give it a count with value 1
+        cart_hash[item] = info_hash
+        cart_hash[item][:count] = 1
+      else # if it is there, add one to the count
+        cart_hash[item][:count] += 1
       end
     end
   end
-  cart_with_count.uniq
+  cart_hash
 end
+
 
 def cost_pre_discounts(cart_with_quant)
 end
 
 
-# elf = add_counter([{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}])
-# puts elf
-# puts "duh"
-# puts count_cart(elf)
+elf = count_cart([{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}])
+puts elf
+puts "duh"
+
 
 ##the cart is currently an array of individual items, translate it into a hash that includes the counts for each item
 #   For example if your cart was [  {"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}]
