@@ -37,17 +37,19 @@ def add_counter(cart_array)
   cart_array
 end
 
-def count_cart(cart_array2)
-  cart_array_copy = cart_array2
-  cart_array2.map do |item_hash|
+def count_cart(cart_with_count)
+  cart_array_copy = cart_with_count
+  cart_with_count.map do |item_hash|
     cart_array_copy.each do |item_hash_copy|
       if item_hash == item_hash_copy
         item_hash[:count] += 1
       end
     end
-    # delete duplicates from cart_array2
   end
-  cart_array2.uniq
+  cart_with_count.uniq
+end
+
+def cost_pre_discounts(cart_with_quant)
 end
 
 
