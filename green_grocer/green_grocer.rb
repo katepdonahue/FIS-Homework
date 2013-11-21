@@ -53,8 +53,7 @@ def count_cart(cart_array)
   cart_hash = {}
   cart_array.each do |item_hash|
     item_hash.each do |item, info_hash| # only one key value pair in here
-      if cart_hash[item].nil?
-        # if it's not there, give it a count with value 1
+      if cart_hash[item].nil? # if it's not there, give it a count with value 1
         cart_hash[item] = info_hash
         cart_hash[item][:count] = 1
       else # if it is there, add one to the count
@@ -67,6 +66,11 @@ end
 
 
 def cost_pre_discounts(cart_with_quant)
+  cost = 0
+  cart_with_quant.each do |item, info_hash|
+    cost += info_hash[:count] * info_hash[:price]
+  end
+  cost
 end
 
 
