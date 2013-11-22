@@ -16,19 +16,22 @@ end
 
 describe "#apply_coupon_discount" do
   it "should change prices when coupons are valid" do
-    expect(apply_coupon_discount(count_cart(cart))).to eq({"AVOCADO" => {:price => 2.50, :clearance => true, :count => 2}, "HAM" => {:price => 3.00, :clearance => true, :count => 1}})
+    coups = [{:item=>"AVOCADO", :num=>2, :cost=>5.00}, {:item=>"BEER", :num=>2, :cost=>20.00}]
+    expect(apply_coupon_discount(count_cart(cart), coups)).to eq({"AVOCADO" => {:price => 2.50, :clearance => true, :count => 2}, "HAM" => {:price => 3.00, :clearance => true, :count => 1}})
   end
 end
 
-# describe "#add_counter" do
-#   it "should add a :count key with a 0 value to each item hash in the cart array" do
-#     expect(add_counter(cart)).to eq([{"AVOCADO" => {:price => 3.00, :clearance => true}, :count => 1}, {"AVOCADO" => {:price => 3.00, :clearance => true}, :count => 1}, {"HAM" => {:price => 3.00, :clearance => true}, :count => 1}])
-#   end
-# end
+describe "#triple_the_discount" do
+  it "should return the discounted price with a tripled discount" do
+    expect(triple_the_discount(2.00, 1.50)).to eq(0.50)
+  end
+end
 
-# describe "#count_cart" do
-#   it "should sum the number of each item-hash in the cart and add the sum as a value to the key :count in that hash" do
-#     expect(count_cart(cart)).to eq([{"AVOCADO" => {:price => 3.00, :clearance => true}, :count => 2}, {"HAM" => {:price => 3.00, :clearance => true}, :count => 1}])
+# describe "#price_disc" do
+#   it "should return the difference between the price and the discount price" do
+#     expect(price_disc(3.00, 2.00)).to eq(1.00)
 #   end
-# end
+
+# describe "#clearance" do
+#   it "should check if an item is on clearance"
 
