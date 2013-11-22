@@ -112,6 +112,16 @@ def total_cost(cart)
   cost
 end
 
+def checkout(cart, coups)
+  discd_cart = clearance(apply_coupon_discount((count_cart(cart)), coups))
+  discd_cart = total_cost(discd_cart) 
+  discd_cart -= 10 if extra_disc?(count_cart(cart))
+  if discd_cart < 0
+    discd_cart = 0
+  end
+  discd_cart
+end
+
 # don't for get to round(2) everywhere you need to!
 
 

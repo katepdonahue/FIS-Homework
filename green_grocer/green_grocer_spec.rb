@@ -53,7 +53,10 @@ end
 
 describe "#checkout" do
   it "should return the total cost of the cart including all the discounts" do
+    cart2 = [{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}, {"HAM" => {:price => 3.00, :clearance => false}}]
+    coups = [{:item=>"AVOCADO", :num=>2, :cost=>5.00}, {:item=>"BEER", :num=>2, :cost=>20.00}]
     expect(checkout(cart2, coups)).to eq(0)
+    cart3 = [{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}, {"HAM" => {:price => 6.00, :clearance => false}}]
     coups2 = [{:item=>"AVOCADO", :num=>2, :cost=>5.00}, {:item=>"AVOCADO", :num=>2, :cost=>5.00}]
     expect(checkout(cart3, coups2)).to eq(8.40)
   end
