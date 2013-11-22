@@ -8,9 +8,9 @@ describe "#count_cart" do
   end
 end
 
-describe "#cost_pre_discounts" do
+describe "#total_cost" do
   it "should return the total cost of the cart without discounts" do
-    expect(cost_pre_discounts(count_cart(cart))).to eq(9.00)
+    expect(total_cost(count_cart(cart))).to eq(9.00)
   end
 end
 

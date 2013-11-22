@@ -65,9 +65,9 @@ def count_cart(cart_array)
 end
 
 
-def cost_pre_discounts(cart_with_quant)
+def total_cost(cart)
   cost = 0
-  cart_with_quant.each do |item, info_hash|
+  cart.each do |item, info_hash|
     cost += info_hash[:count] * info_hash[:price]
   end
   cost
@@ -94,6 +94,8 @@ def x3_discount(reg_ppu, disc_ppu)
   new_disc_ppu = reg_ppu - (reg_ppu - disc_ppu)*3
 end
 
+def clearance()
+end
 
 # elf = count_cart([{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}])
 # puts elf
