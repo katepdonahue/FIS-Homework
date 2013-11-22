@@ -65,16 +65,9 @@ def count_cart(cart_array)
 end
 
 
-def total_cost(cart)
-  cost = 0
-  cart.each do |item, info_hash|
-    cost += info_hash[:count] * info_hash[:price]
-  end
-  cost
-end
-
-def apply_coupon_discount(cart_w_quant, coups)
-  cart_w_quant.map do |cart_item, info_hash|
+def apply_coupon_discount(cart_w_quant, coups) # unitentionally mutates original cart
+  cart = cart_w_quant
+  cart.map do |cart_item, info_hash|
     item_amt = info_hash[:count]
     coups.each do |coup_hash|
       if coup_hash[:item] == cart_item
@@ -87,15 +80,33 @@ def apply_coupon_discount(cart_w_quant, coups)
       end
     end
   end
-  cart_w_quant
+  cart
 end
 
 def x3_discount(reg_ppu, disc_ppu)
   new_disc_ppu = reg_ppu - (reg_ppu - disc_ppu)*3
 end
 
-def clearance()
+def clearance(cart)
+  cart.map do |item, info_hash|
+    if info_hash[:clearance] == true
+      info_hash[:price] = (info_hash[:price] * 0.80).round(2)
+    end
+  end
+  cart # if I delete this it breaks, why?
 end
+
+def extra_disc?(cart)
+end
+
+def total_cost(cart)
+  cost = 0
+  cart.each do |item, info_hash|
+    cost += info_hash[:count] * info_hash[:price]
+  end
+  cost
+end
+
 
 # elf = count_cart([{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}])
 # puts elf

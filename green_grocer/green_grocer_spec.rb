@@ -1,6 +1,7 @@
 require "./green_grocer"
 
 cart = [{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}, {"HAM" => {:price => 3.00, :clearance => false}}]
+cart2 = [{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}, {"HAM" => {:price => 3.00, :clearance => false}}]
 
 describe "#count_cart" do
   it "should return the cart as a hash with values being hashes, each with a new key value pair that is :count" do
@@ -29,7 +30,15 @@ end
 
 describe "#clearance" do
   it "should give 20% to items on clearance" do
-    expect(count_cart(cart)).to eq({"AVOCADO" => {:price => 2.40, :clearance => true, :count => 2}, "HAM" => {:price => 2.40, :clearance => false, :count => 1}})
+    cart2 = [{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}, {"HAM" => {:price => 3.00, :clearance => false}}]
+    expect(clearance(count_cart(cart2))).to eq({"AVOCADO" => {:price => 2.40, :clearance => true, :count => 2}, "HAM" => {:price => 3.00, :clearance => false, :count => 1}})
   end
+  #  the mutated original cart test
+  # it "should give 20% to items on clearance" do
+  #   expect(clearance(count_cart(cart))).to eq({"AVOCADO" => {:price => 2.40, :clearance => true, :count => 2}, "HAM" => {:price => 3.00, :clearance => false, :count => 1}})
+  # end
 end
+
+
+
 
