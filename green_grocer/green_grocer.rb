@@ -75,14 +75,14 @@ end
 
 def apply_coupon_discount(cart_w_quant, coups)
   cart_w_quant.map do |cart_item, info_hash|
+    item_amt = info_hash[:count]
     coups.each do |coup_hash|
       if coup_hash[:item] == cart_item
-        cart_amt = info_hash[:count]
-        while cart_amt >= coup_hash[:num] # check we have enough to use coupon
-          disc_ppu = (hash[:cost]/hash[:num])
-          disc_ppu = triple_the_discount(disc_ppu)if coups[0] == coups[1]
-          info_hash[:price] ==
-          cart_amt -= hash[:num]
+        while item_amt >= coup_hash[:num] # check we have enough to use coupon
+          disc_ppu = (coup_hash[:cost]) / (coup_hash[:num])
+          disc_ppu = x3_discount(info_hash[:price], disc_ppu) if coups[0] == coups[1]
+          info_hash[:price] = disc_ppu
+          item_amt -= coup_hash[:num]
         end
       end
     end
@@ -90,13 +90,10 @@ def apply_coupon_discount(cart_w_quant, coups)
   cart_w_quant
 end
 
-def triple_the_discount(reg_ppu, disc_ppu)
+def x3_discount(reg_ppu, disc_ppu)
   new_disc_ppu = reg_ppu - (reg_ppu - disc_ppu)*3
 end
 
-# def price_w_disc(reg_unit, disc_unit)
-#   new_price = disc_unit
-# end
 
 # elf = count_cart([{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}])
 # puts elf

@@ -21,9 +21,9 @@ describe "#apply_coupon_discount" do
   end
 end
 
-describe "#triple_the_discount" do
+describe "#x3_discount" do
   it "should return the discounted price with a tripled discount" do
-    expect(triple_the_discount(2.00, 1.50)).to eq(0.50)
+    expect(x3_discount(2.00, 1.50)).to eq(0.50)
   end
 end
 
