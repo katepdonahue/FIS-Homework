@@ -10,7 +10,7 @@ describe "#count_cart" do
 end
 
 describe "#total_cost" do
-  it "should return the total cost of the cart without discounts" do
+  it "should return the total cost of the cart" do
     expect(total_cost(count_cart(cart))).to eq(9.00)
   end
 end
@@ -33,10 +33,12 @@ describe "#clearance" do
     cart2 = [{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}, {"HAM" => {:price => 3.00, :clearance => false}}]
     expect(clearance(count_cart(cart2))).to eq({"AVOCADO" => {:price => 2.40, :clearance => true, :count => 2}, "HAM" => {:price => 3.00, :clearance => false, :count => 1}})
   end
+
   #  the mutated original cart test
   # it "should give 20% to items on clearance" do
   #   expect(clearance(count_cart(cart))).to eq({"AVOCADO" => {:price => 2.40, :clearance => true, :count => 2}, "HAM" => {:price => 3.00, :clearance => false, :count => 1}})
   # end
+
 end
 
 describe "#extra_disc?" do
@@ -47,6 +49,15 @@ describe "#extra_disc?" do
     cart3 = [{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}, {"HAM" => {:price => 6.00, :clearance => false}}]
     expect(extra_disc?(count_cart(cart3))).to be_false
   end
+end
+
+describe "#checkout" do
+  it "should return the total cost of the cart including all the discounts" do
+    expect(checkout(cart2, coups)).to eq(0)
+    coups2 = [{:item=>"AVOCADO", :num=>2, :cost=>5.00}, {:item=>"AVOCADO", :num=>2, :cost=>5.00}]
+    expect(checkout(cart3, coups2)).to eq(8.40)
+  end
+
 end
 
 
