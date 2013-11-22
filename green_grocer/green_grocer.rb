@@ -66,7 +66,7 @@ end
 
 
 def apply_coupon_discount(cart_w_quant, coups) # unitentionally mutates original cart
-  cart = cart_w_quant
+  cart = cart_w_quant # I made a copy to try to prevent my original cart from being mutated but it didn't work
   cart.map do |cart_item, info_hash|
     item_amt = info_hash[:count]
     coups.each do |coup_hash|
@@ -97,6 +97,11 @@ def clearance(cart)
 end
 
 def extra_disc?(cart)
+  truth = 0
+  cart.each do |item, info_hash|
+    truth += 1 if info_hash[:price] <= 5.00
+  end
+  truth == cart.length
 end
 
 def total_cost(cart)
@@ -106,6 +111,8 @@ def total_cost(cart)
   end
   cost
 end
+
+# don't for get to round(2) everywhere you need to!
 
 
 # elf = count_cart([{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}])
