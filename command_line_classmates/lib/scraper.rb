@@ -14,11 +14,23 @@ class Scraper
     html.search("h3").text.split(/(?<=[a-z.])(?=[A-Z])/)
   end
 
+  # def get_twitter
+  #   twitter = []
+  #   html.search(".back").search("a.twitter").text.split.each do |x|
+  #     if x[0] == "@"
+  #       twitter << x
+  #     end
+  #   end
+  #   twitter
+  # end
+
   def get_twitter
     twitter = []
-    html.search(".back").search("a.twitter").text.split.each do |x|
-      if x[0] == "@"
-        twitter << x
+    html.search(".back").each do |back_plate|
+      if back_plate.search(".twitter").text.split[0].nil?
+        twitter << "none"
+      else
+        twitter << back_plate.search(".twitter").text.split[0]
       end
     end
     twitter
@@ -27,8 +39,8 @@ class Scraper
   def get_blog
     blog_url = []
     html.search(".back").each do |back_plate|
-      if back_plate.search("a.blog").text == "Blog"
-        blog_url << back_plate.search("a.blog")[0]["href"]
+      if back_plate.search(".blog").text == "Blog"
+        blog_url << back_plate.search(".blog")[0]["href"]
       else
         blog_url << "none"
       end
@@ -39,7 +51,7 @@ class Scraper
 end
 
 # my_scraper = Scraper.new("http://flatironschool-bk.herokuapp.com/")
-# p my_scraper.get_twitter
+# puts my_scraper.get_blog
 
   # doesn't work:
   # def get_twitter
