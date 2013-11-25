@@ -39,3 +39,8 @@ describe "#third_letter" do
   end
 end
 
+describe "#count_words" do
+  it "should count the number of times each word appears in a string and store that data in a hash that has the word as the key and the count as the value" do
+    expect(count_words("Hello my name is is my name.")).to eq({"hello" => 1, "my" => 2, "name" => 2, "is" => 2})
+  end
+end

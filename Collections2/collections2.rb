@@ -52,7 +52,10 @@ def third_letter(array, char)
 end
 
 # Count the number of times each word appears in a string and store that data in a hash that has the word as the key and the count as the value.
- 
+def count_words(string)
+
+end
+
 #   string = "the flatiron school is better than general assembly"
  
 # Count the number of times each hash appears in the array, remove any duplicates and add a :count key to each hash with the number of times it appears.
