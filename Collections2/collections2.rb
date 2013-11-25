@@ -1,3 +1,4 @@
+require 'debugger'
 # Collections Practice
  
 # Finish the first collections assignment if you haven't already.
@@ -9,8 +10,16 @@
 # Return true if every element of the tools array starts with an "r" and false otherwise.
 #   tools = ["ruby", "rspec", "rails"]
 def starts_w_r(array)
-
+  truth = 0
+  array.each do |word|
+    # debugger
+    truth += 1 if word.downcase[0] == 'r'
+  end
+  # debugger
+  truth == array.length
 end
+
+# starts_w_r(["ruby", "spec", "rails"])
  
 # Create a new array from the captain_planet array with all the elements that contain the letter "a".  
 #   captain_planet = ["earth", "fire", "wind", "water", "heart"]
