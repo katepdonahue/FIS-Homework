@@ -11,7 +11,8 @@ end
 
 describe "#total_cost" do
   it "should return the total cost of the cart" do
-    expect(total_cost(count_cart(cart))).to eq(9.00)
+    cart5 = {"AVOCADO" => {:price => 3.00, :clearance => true, :count => 0, :cp_price => 5.00, :cp_count => 1}, "HAM" => {:price => 3.00, :clearance => false, :count => 1}}
+    expect(total_cost(cart5)).to eq(8.00)
   end
 end
 
@@ -59,9 +60,9 @@ describe "#checkout" do
     expect(checkout(cart2, coups)).to eq(0)
     cart3 = [{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}, {"HAM" => {:price => 6.00, :clearance => false}}]
     coups2 = [{:item=>"AVOCADO", :num=>2, :cost=>5.00}, {:item=>"AVOCADO", :num=>2, :cost=>5.00}]
-    expect(checkout(cart3, coups2)).to eq(8.40)
-    cart4 = [{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}, {"HAM" => {:price => 6.00, :clearance => false}}]
-    expect(checkout(cart4, coups2)).to eq(11.40)
+    expect(checkout(cart3, coups2)).to eq(10.00)
+    cart4 = [{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}, {"HAM" => {:price => 6.00, :clearance => false}}]
+    expect(checkout(cart4, coups2)).to eq(13.20)
   end
 
 end

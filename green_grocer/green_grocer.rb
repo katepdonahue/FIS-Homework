@@ -75,6 +75,11 @@ def apply_coupon_discount(cart_w_quant, coups) # unitentionally mutates original
           info_hash[:cp_count] ||= 0
           info_hash[:cp_count] += 1
           info_hash[:count] -= coup_hash[:num]
+          if info_hash[:cp_count] == 2 # using both coupons which are the same
+            disc_ppu = (coup_hash[:cost]) / (coup_hash[:num])
+            new_disc_ppu = x3_discount(info_hash[:price], disc_ppu)
+            info_hash[:cp_price] = new_disc_ppu * coup_hash[:num]
+          end
         end
       end
     end
@@ -107,7 +112,8 @@ end
 def total_cost(cart)
   cost = 0
   cart.each do |item, info_hash|
-    cost += info_hash[:count] * info_hash[:price]
+    cost += (info_hash[:count] * info_hash[:price]) 
+    cost += (info_hash[:cp_count] * info_hash[:cp_price]) unless info_hash[:cp_count].nil?
   end
   cost
 end
