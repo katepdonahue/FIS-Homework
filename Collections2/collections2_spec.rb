@@ -14,3 +14,9 @@ describe "#contains_a" do
     expect(contains_a(["earth", "fire", "wind", "water", "heart"])).to eq(["earth", "water", "heart"])
   end
 end
+
+describe "#first_wa" do
+  it "should identify the first element in the array that begins with the letters 'wa'" do
+    expect(first_wa(["candy", :pepper, "wall", :ball, "wacky"])).to eq("wall")
+  end
+end

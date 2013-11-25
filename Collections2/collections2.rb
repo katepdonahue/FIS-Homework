@@ -25,6 +25,9 @@ end
  
 # Identify the first element in the stuff array that begins with the letters "wa".
 #   stuff = ["candy", :pepper, "wall", :ball, "wacky"]
+def first_wa(array)
+
+end
  
 # Identify all the elements in the stuff array that begins with the letters "wa".
 #   stuff = ["candy", :pepper, "wall", :ball, "wacky"]
