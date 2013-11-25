@@ -29,6 +29,6 @@ end
 
 describe "#only_s" do
   it "should remove anything that's not a string from an array" do
-    expect(all_wa(["candy", :wapper, "wall", :ball, 5])).to eq(["candy", "wall"])
+    expect(only_s(["candy", :wapper, "wall", :ball, 5])).to eq(["candy", "wall"])
   end
 end

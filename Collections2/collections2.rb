@@ -32,7 +32,7 @@ def first_wa(array)
 end
  
 # Identify all the elements in the stuff array that begins with the letters "wa".
-#   stuff = ["candy", :pepper, "wall", :ball, "wacky"]
+ # stuff = ["candy", :pepper, "wall", :ball, "wacky"]
 def all_wa(array)
   array.select { |elt| elt[0..1] == 'wa' }
 end
@@ -40,8 +40,11 @@ end
 # Remove anything that's not a string from an array.
 # Hint: Use the method "class"  "blake".class
 def only_s(array)
-
+  # debugger
+  array.select { |elt| elt.class == String }
 end
+
+# only_s(stuff)
  
 # Change the third letter of all strings in an array.  Your solution should work for arrays that have mixed types of objects inside it.
  
