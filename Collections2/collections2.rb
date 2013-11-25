@@ -34,7 +34,7 @@ end
 # Identify all the elements in the stuff array that begins with the letters "wa".
 #   stuff = ["candy", :pepper, "wall", :ball, "wacky"]
 def all_wa(array)
-
+  array.select { |elt| elt[0..1] == 'wa' }
 end
  
 # Remove anything that's not a string from an array.
