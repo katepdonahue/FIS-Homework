@@ -51,6 +51,15 @@ describe "#count_hash" do
   end
 end
 
+describe "#merge" do
+  it "should take two arrays of hashes and merge the first names and last names into a new array of hashes where each hash has all information about itself" do
+    array1 = [{:first_name => "blake"}, {:first_name => "ashley"}]
+    array2 = [{"blake" => {:awesomeness => 10, :height => "74", :last_name => "johnson"},"ashley" => {:awesomeness => 9, :height => 60, :last_name => "dubs"}}]
+    array3 = [{:first_name => "blake", :awesomeness => 10, :height => "74", :last_name => "johnson"}, {:first_name => "ashley", :awesomeness => 9, :height => 60, :last_name => "dubs"}]
+    expect(merge(array1, array2)).to eq(array3)
+  end
+end
+
 
 
 

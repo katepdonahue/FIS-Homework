@@ -67,37 +67,6 @@ end
 #   [{:name => "blake"}, {:name => "blake"}, {:name => "ashley"}]
 #     becomes
 #   [{:name => "blake", :count => 2}, {:name => "ashley", :count => 1}]
-# def count_hash(array)
-#   new_array = []
-#   array.each do |hash|
-#     new_array.include? hash
-#       # something
-#     new_array << hash
-#     if hash[:count]
-#       hash[:count] += 1
-#     else hash[:count] = 1
-#     end
-#   end
-# end
-# def count_hash(array)
-#   array_copy1 = []
-#   array_copy2 = []
-#   array.each do |x|
-#     array_copy1 << x
-#     array_copy2 << x
-#   end
-#   array_copy1.each_with_index do |hash, i|
-#     count = 0
-#     array_copy2.each do |same_hash|
-#       if hash == same_hash
-#         count += 1
-#         puts "If statement hash is #{hash}, same hash is #{same_hash}, count is #{count}"
-#       end
-#     end
-#     array[i][:count] = count
-#     puts "Just added count to hash so hash is #{array[i]}, array is #{array}, array copy1 is #{array_copy1} array copy 2 is #{array_copy2}"
-#   end
-# end
 def count_hash(array)
   nest_hash = {}
   new_array = []
@@ -111,8 +80,6 @@ def count_hash(array)
   new_array
 end
 
- 
-# p count_hash([{:name => "blake"}, {:name => "blake"}, {:name => "ashley"}])
 
 # Take two arrays of hashes and merge the first names and last names into a new array of hashes where each hash has all information about itself.
  
