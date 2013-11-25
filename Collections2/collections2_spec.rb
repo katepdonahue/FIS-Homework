@@ -38,3 +38,4 @@ describe "#third_letter" do
     expect(third_letter(["candy", :wapper, "wall", :ball, 5], "$")).to eq(["ca$dy", :wapper, "wa$l", :ball, 5])
   end
 end
+
