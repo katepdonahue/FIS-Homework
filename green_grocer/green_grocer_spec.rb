@@ -31,7 +31,7 @@ end
 describe "#clearance" do
   it "should give 20% to items on clearance" do
     cart1 = {"AVOCADO" => {:price => 3.00, :clearance => true, :count => 0, :cp_price => 5.00, :cp_count => 1}, "HAM" => {:price => 3.00, :clearance => false, :count => 1}}
-    expect(clearance(count_cart(cart2))).to eq({"AVOCADO" => {:price => 2.40, :clearance => true, :count => 0, :cp_price => 4.00, :cp_count => 1}, "HAM" => {:price => 3.00, :clearance => false, :count => 1}})
+    expect(clearance(cart1)).to eq({"AVOCADO" => {:price => 2.40, :clearance => true, :count => 0, :cp_price => 4.00, :cp_count => 1}, "HAM" => {:price => 3.00, :clearance => false, :count => 1}})
   end
 
   #  the mutated original cart test

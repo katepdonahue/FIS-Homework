@@ -68,14 +68,13 @@ end
 def apply_coupon_discount(cart_w_quant, coups) # unitentionally mutates original cart
   cart = cart_w_quant # I made a copy to try to prevent my original cart from being mutated but it didn't work
   cart.map do |cart_item, info_hash|
-    item_amt = info_hash[:count]
     coups.each do |coup_hash|
       if coup_hash[:item] == cart_item
-        while item_amt >= coup_hash[:num] # check we have enough to use coupon
-          disc_ppu = (coup_hash[:cost]) / (coup_hash[:num])
-          disc_ppu = x3_discount(info_hash[:price], disc_ppu) if coups[0] == coups[1]
-          info_hash[:price] = disc_ppu
-          item_amt -= coup_hash[:num]
+        while info_hash[:count] >= coup_hash[:num] # check we have enough to use coupon
+          info_hash[:cp_price] = coup_hash[:cost]
+          info_hash[:cp_count] ||= 0
+          info_hash[:cp_count] += 1
+          info_hash[:count] -= coup_hash[:num]
         end
       end
     end
@@ -91,6 +90,7 @@ def clearance(cart)
   cart.map do |item, info_hash|
     if info_hash[:clearance] == true
       info_hash[:price] = (info_hash[:price] * 0.80).round(2)
+      info_hash[:cp_price] = (info_hash[:cp_price] * 0.80).round(2) unless info_hash[:cp_price].nil?
     end
   end
   cart # if I delete this it breaks, why?
@@ -127,6 +127,24 @@ end
 
 # elf = count_cart([{"AVOCADO" => {:price => 3.00, :clearance => true}}, {"AVOCADO" => {:price => 3.00, :clearance => true}}])
 # puts elf
+
+# def apply_coupon_discount(cart_w_quant, coups) # unitentionally mutates original cart
+#   cart = cart_w_quant # I made a copy to try to prevent my original cart from being mutated but it didn't work
+#   cart.map do |cart_item, info_hash|
+#     item_amt = info_hash[:count]
+#     coups.each do |coup_hash|
+#       if coup_hash[:item] == cart_item
+#         while item_amt >= coup_hash[:num] # check we have enough to use coupon
+#           disc_ppu = (coup_hash[:cost]) / (coup_hash[:num])
+#           disc_ppu = x3_discount(info_hash[:price], disc_ppu) if coups[0] == coups[1]
+#           info_hash[:price] = disc_ppu
+#           item_amt -= coup_hash[:num]
+#         end
+#       end
+#     end
+#   end
+#   cart
+# end
 
 
 
