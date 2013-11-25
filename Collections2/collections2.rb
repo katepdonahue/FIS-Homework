@@ -39,6 +39,9 @@ end
  
 # Remove anything that's not a string from an array.
 # Hint: Use the method "class"  "blake".class
+def only_s(array)
+
+end
  
 # Change the third letter of all strings in an array.  Your solution should work for arrays that have mixed types of objects inside it.
  

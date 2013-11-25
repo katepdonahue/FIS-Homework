@@ -1,10 +1,10 @@
 require "./collections2"
 
 describe "#starts_w_r" do
-  it "should return true if every element of the array starts with an r." do
+  it "should return true if every element of the array starts with an r" do
     expect(starts_w_r(["ruby", "rspec", "rails"])).to be_true
   end
-  it "should return false if one or more elements of the array doesn't start with an r." do
+  it "should return false if one or more elements of the array doesn't start with an r" do
     expect(starts_w_r(["ruby", "spec", "rails"])).to be_false
   end
 end
@@ -24,5 +24,11 @@ end
 describe "#all_wa" do
   it "should identify all the elements in the array that begin with the letters 'wa'" do
     expect(all_wa(["candy", :wapper, "wall", :ball, "wacky"])).to eq([:wapper, "wall", "wacky"])
+  end
+end
+
+describe "#only_s" do
+  it "should remove anything that's not a string from an array" do
+    expect(all_wa(["candy", :wapper, "wall", :ball, 5])).to eq(["candy", "wall"])
   end
 end
