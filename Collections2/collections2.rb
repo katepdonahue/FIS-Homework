@@ -27,9 +27,7 @@ end
 #  stuff = ["candy", :pepper, "wall", :ball, "wacky"]
 def first_wa(array)
   i = 0
-  until array[i][0..1] == "wa"
-    i += 1
-  end
+  i += 1 until array[i][0..1] == "wa" 
   array[i]
 end
  
