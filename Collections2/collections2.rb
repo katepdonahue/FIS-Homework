@@ -46,7 +46,7 @@ end
 # Change the third letter of all strings in an array.  Your solution should work for arrays that have mixed types of objects inside it.
 def third_letter(array, char)
   array.each do |elt|
-    elt[2] = char if elt.is_a? String
+    elt[2] = char if (elt.is_a? String) && (elt.length > 2)
   end
   array
 end
@@ -54,7 +54,7 @@ end
 # Count the number of times each word appears in a string and store that data in a hash that has the word as the key and the count as the value.
 def count_words(string)
   hash = {}
-  string.downcase.gsub(/[^a-z\s]*/, "").split.each do |word|
+  string.downcase.gsub(/[^a-z\s]/, "").split.each do |word|
     hash[word] ||= 0
     hash[word] += 1
   end
@@ -67,7 +67,53 @@ end
 #   [{:name => "blake"}, {:name => "blake"}, {:name => "ashley"}]
 #     becomes
 #   [{:name => "blake", :count => 2}, {:name => "ashley", :count => 1}]
+# def count_hash(array)
+#   new_array = []
+#   array.each do |hash|
+#     new_array.include? hash
+#       # something
+#     new_array << hash
+#     if hash[:count]
+#       hash[:count] += 1
+#     else hash[:count] = 1
+#     end
+#   end
+# end
+# def count_hash(array)
+#   array_copy1 = []
+#   array_copy2 = []
+#   array.each do |x|
+#     array_copy1 << x
+#     array_copy2 << x
+#   end
+#   array_copy1.each_with_index do |hash, i|
+#     count = 0
+#     array_copy2.each do |same_hash|
+#       if hash == same_hash
+#         count += 1
+#         puts "If statement hash is #{hash}, same hash is #{same_hash}, count is #{count}"
+#       end
+#     end
+#     array[i][:count] = count
+#     puts "Just added count to hash so hash is #{array[i]}, array is #{array}, array copy1 is #{array_copy1} array copy 2 is #{array_copy2}"
+#   end
+# end
+def count_hash(array)
+  nest_hash = {}
+  new_array = []
+  array.each do |hash|
+    nest_hash[hash] ||= 0
+    nest_hash[hash] += 1
+  end
+  nest_hash.each do |hash, count|
+    new_array << {:name => hash[:name], :count => count}
+  end
+  new_array
+end
+
  
+# p count_hash([{:name => "blake"}, {:name => "blake"}, {:name => "ashley"}])
+
 # Take two arrays of hashes and merge the first names and last names into a new array of hashes where each hash has all information about itself.
  
 # [

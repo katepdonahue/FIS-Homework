@@ -35,7 +35,7 @@ end
 
 describe "#third_letter" do
   it "should change the third letter of all strings in an array" do
-    expect(third_letter(["candy", :wapper, "wall", :ball, 5], "$")).to eq(["ca$dy", :wapper, "wa$l", :ball, 5])
+    expect(third_letter(["candy", "wa", :wapper, "wall", :ball, 5], "$")).to eq(["ca$dy", "wa", :wapper, "wa$l", :ball, 5])
   end
 end
 
@@ -44,3 +44,14 @@ describe "#count_words" do
     expect(count_words("Hello my name is is my name.")).to eq({"hello" => 1, "my" => 2, "name" => 2, "is" => 2})
   end
 end
+
+describe "#count_hash" do
+  it "should count the number of times each hash appears in an array and store that data in a key value pair in the hash" do
+    expect(count_hash([{:name => "blake"}, {:name => "blake"}, {:name => "ashley"}])).to eq([{:name => "blake", :count => 2}, {:name => "ashley", :count => 1}])
+  end
+end
+
+
+
+
+
