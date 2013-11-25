@@ -8,3 +8,9 @@ describe "#starts_w_r" do
     expect(starts_w_r(["ruby", "spec", "rails"])).to be_false
   end
 end
+
+describe "#contains_a" do
+  it "should return an array with all the elements that contain a" do
+    expect(contains_a(["earth", "fire", "wind", "water", "heart"])).to eq(["earth", "water", "heart"])
+  end
+end

@@ -12,17 +12,16 @@ require 'debugger'
 def starts_w_r(array)
   truth = 0
   array.each do |word|
-    # debugger
     truth += 1 if word.downcase[0] == 'r'
   end
-  # debugger
   truth == array.length
 end
-
-# starts_w_r(["ruby", "spec", "rails"])
  
 # Create a new array from the captain_planet array with all the elements that contain the letter "a".  
 #   captain_planet = ["earth", "fire", "wind", "water", "heart"]
+def contains_a(array)
+
+end
  
 # Identify the first element in the stuff array that begins with the letters "wa".
 #   stuff = ["candy", :pepper, "wall", :ball, "wacky"]
