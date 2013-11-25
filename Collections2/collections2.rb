@@ -33,6 +33,9 @@ end
  
 # Identify all the elements in the stuff array that begins with the letters "wa".
 #   stuff = ["candy", :pepper, "wall", :ball, "wacky"]
+def all_wa(array)
+
+end
  
 # Remove anything that's not a string from an array.
 # Hint: Use the method "class"  "blake".class

@@ -17,6 +17,12 @@ end
 
 describe "#first_wa" do
   it "should identify the first element in the array that begins with the letters 'wa'" do
-    expect(first_wa(["candy", :pepper, "wall", :ball, "wacky"])).to eq("wall")
+    expect(first_wa(["candy", :wapper, "wall", :ball, "wacky"])).to eq(:wapper)
+  end
+end
+
+describe "#all_wa" do
+  it "should identify all the elements in the array that begin with the letters 'wa'" do
+    expect(all_wa(["candy", :wapper, "wall", :ball, "wacky"])).to eq([:wapper, "wall", "wacky"])
   end
 end
