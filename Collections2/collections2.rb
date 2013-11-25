@@ -24,9 +24,13 @@ def contains_a(array)
 end
  
 # Identify the first element in the stuff array that begins with the letters "wa".
-#   stuff = ["candy", :pepper, "wall", :ball, "wacky"]
+#  stuff = ["candy", :pepper, "wall", :ball, "wacky"]
 def first_wa(array)
-
+  i = 0
+  until array[i][0..1] == "wa"
+    i += 1
+  end
+  array[i]
 end
  
 # Identify all the elements in the stuff array that begins with the letters "wa".
