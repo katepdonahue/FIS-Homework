@@ -158,7 +158,13 @@ end
 #     }
 # ]
 def pull_hash(array, hash_key, hash_val)
-
+  new_array = []
+  array.each do |hash|
+    if hash[:temperature] == "cool"
+      new_array << hash
+    end
+  end
+  new_array
 end
  
 # Convert the nested data structure from it's current structure
