@@ -66,6 +66,13 @@ describe "#pull_hash" do
     expect(pull_hash(array, :temperature, "cool")).to eq([{:name => "blake", :temperature => "cool"}])
   end
 end
+describe "#hash_by_location" do
+  it "should return the nested hashes organized alphabetically by location" do
+    hash = {"flatiron school bk" => {:location => "NYC", :price => "free"}, "dev boot camp" => {:location => "SF", :price => "a million dollars"}, "dev boot camp chicago" => {:location => "Chicago", :price => "half a million dollars"}, "general assembly" => {:location => "NYC", :price => "too much"}, "some school in SF" => {:location => "SF", :price => "your soul"}}
+    alt_hash = {"dev boot camp chicago" => {:location => "Chicago", :price => "half a million dollars"}, "flatiron school bk" => {:location => "NYC", :price => "free"}, "general assembly" => {:location => "NYC", :price => "too much"}, "dev boot camp" => {:location => "SF", :price => "a million dollars"}, "some school in SF" => {:location => "SF", :price => "your soul"}}
+    expect(hash_by_location(hash)).to eq(alt_hash)
+  end
+end
 
 
 
