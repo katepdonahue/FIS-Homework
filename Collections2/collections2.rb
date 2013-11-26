@@ -122,6 +122,29 @@ end
 #           :last_name => "dubs"
 #     }
 # ]
+def merge(arraya, arrayb)
+  new_array =  []
+  arraya.each do |hash|
+    name = hash[:first_name]
+    arrayb.each do |ugly_hash| 
+      ugly_hash.each do |key, val_hash|
+        if key == name
+          hash[:awesomeness] = val_hash[:awesomeness] 
+          hash[:height] = val_hash[:height]
+          hash[:last_name] = val_hash[:last_name]
+          new_array << hash
+        end
+      end
+    end
+  end
+  new_array
+end
+
+# array1 = [{:first_name => "blake"}, {:first_name => "ashley"}]
+# array2 = [{"blake" => {:awesomeness => 10, :height => "74", :last_name => "johnson"},"ashley" => {:awesomeness => 9, :height => 60, :last_name => "dubs"}}]
+    
+# puts merge(array1, array2)
+
  
 # Return all hashes that have a value of "cool" for the :temperature key.
 # [
