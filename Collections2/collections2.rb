@@ -157,7 +157,7 @@ end
 #         :temperature => "cool"
 #     }
 # ]
-def pull_hash(array, hash_val)
+def pull_hash(array, hash_key, hash_val)
 
 end
  
