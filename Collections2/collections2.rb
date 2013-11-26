@@ -157,6 +157,9 @@ end
 #         :temperature => "cool"
 #     }
 # ]
+def pull_hash(array, hash_val)
+
+end
  
 # Convert the nested data structure from it's current structure
  

@@ -60,6 +60,12 @@ describe "#merge" do
   end
 end
 
+describe "#pull_hash" do
+  it "should return all hashes that have a value of 'cool' for the :temperature key." do
+  array = [{:name => "ashley", :temperature => "sort of cool"}, {:name => "blake", :temperature => "cool"}]
+    expect(pull_hash(array, :temperature, "cool")).to eq({:name => "blake", :temperature => "cool"})
+  end
+end
 
 
 
