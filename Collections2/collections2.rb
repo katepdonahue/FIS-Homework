@@ -192,3 +192,8 @@ end
 #   }
 # }
 # to a structure that organizes the schools by location.
+def hash_by_location(hash_of_hash)
+  hash_of_hash.each do |key, val_hash|
+    hash_of_hash.sort_by { |key, val| val[:location]}
+  end
+end
