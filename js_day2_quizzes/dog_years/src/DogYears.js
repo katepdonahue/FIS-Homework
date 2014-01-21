@@ -7,7 +7,7 @@ function Dog() {
     return this.age;
   };
   this.ageInDays = function() {
-
+    return this.age * 365;
   };
   this.ageInDogYears = function() {
 
