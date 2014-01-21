@@ -1,4 +1,4 @@
-describe( "#is_between", function() {
+describe( "#countSentences", function() {
   it("should return the number of sentences in a string", function() {
     expect(countSentences("one. two. three?")).toBe(3);
   });      
