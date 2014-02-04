@@ -8,7 +8,13 @@ var svg = d3.select("body").append("svg")
          .attr("transform", "translate(32," + height/2 + ")");
 
 // load data
-d3.csv("data.csv", type, function(error, data) {});
+d3.csv("data.csv", type, function(error, data) {
+  update(alphabet);
+
+  setInterval(function() {
+    update(shuffle(alphabet));
+  }, 1500);
+});
 
 // make an update function
 function update(data) {
@@ -32,12 +38,6 @@ function update(data) {
   text.exit().remove();
 
 }
-
-update(alphabet);
-
-setInterval(function() {
-  update(shuffle(alphabet));
-}, 1500);
 
 function shuffle(array) {
   return array[0];
