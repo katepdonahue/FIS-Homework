@@ -42,3 +42,8 @@ function update(data) {
 function shuffle(array) {
   return array[0];
 }
+
+function type(d) {
+  d.value = d.value.toString(); // coerse to string
+  return d;
+}
